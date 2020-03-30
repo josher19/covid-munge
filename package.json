@@ -1,0 +1,20 @@
+{
+  "name": "covid-daily-tracker",
+  "version": "1.0.0",
+  "description": "Check for daily and average change in number of Covid-19 cases in the USA or by State.",
+  "main": "munge.js",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "fetch:usa": "node fetch_data.js us/daily",
+    "munge:usa": "node munge.js undefined ${STAT:-positive} us_daily.json",
+    "usa": "npm run fetch:usa && npm run munge:usa",
+    "fetch": "node fetch_data.js us/daily",
+    "munge": "node munge.js",
+    "state": "npm run fetch && npm run munge"
+  },
+  "author": "josher19",
+  "license": "MIT"
+}
